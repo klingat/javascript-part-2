@@ -82,7 +82,7 @@ function numbersSquared (num) {
     return num * num;
 }
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var numbers = [2, 3, 4];
  
 console.log(numbers.map(numbersSquared));
 
@@ -90,7 +90,15 @@ console.log(numbers.map(numbersSquared));
 /* Create a function that can be used with Array.prototype.map. This function 
 should be able to take an object and square its “num” property. Then, use this 
 function with map on an array of objects each containming a “num” property.*/
+var arrayObjectsABC = [{num: 2}, {num: 3}, {num: 4}];
 
+
+function objectNumSquared (obj) { /* use as a parameter a universale name for 
+                                an object so that you can re-use the function */
+    return obj.num * obj.num;
+}
+
+console.log(arrayObjectsABC.map(objectNumSquared));
 
 
  
