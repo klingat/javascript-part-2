@@ -78,14 +78,19 @@ console.log(arrayObjects);
 should take a number and return its square. Then, use this function with map on 
 an array of numbers to check the result. */
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function numbersSquared (num) {
+    return num * num;
+}
 
-var numbersSquared = numbers.map(function(num) {
-        return num*num;   
-    }
- );
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  
-console.log(numbersSquared);
+console.log(numbers.map(numbersSquared));
+
+
+/* Create a function that can be used with Array.prototype.map. This function 
+should be able to take an object and square its “num” property. Then, use this 
+function with map on an array of objects each containming a “num” property.*/
+
 
 
  
