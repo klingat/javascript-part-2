@@ -101,4 +101,53 @@ function objectNumSquared (obj) { /* use as a parameter a universale name for
 console.log(arrayObjectsABC.map(objectNumSquared));
 
 
- 
+
+
+/* In a previous workshop, you had to create a function that took two numbers 
+and an operation (add, sub, mult, …) and returned the result of the operation 
+on the two numbers. Here we are going to do the same but at a higher order. 
+Create a function called operationMaker that takes only a string called 
+operation as argument. This string could be “add”, “subtract”, “mult” or “div”. 
+Your function will return a function that will take two numbers and return the 
+result of running operation on these numbers. */
+function operationMaker (operation) {
+    if (operation === "add") {
+        return function (num1, num2) {
+            return num1 + num2;
+        }
+    }
+    if (operation === "subtract") {
+        return function (num1, num2) {
+            return num1 - num2;
+        }
+    } 
+    if (operation === "mult") {
+        return function (num1, num2) {
+            return num1 * num2;
+        }
+    }
+    if(operation === "div") {
+        return function (num1, num2) {
+            return num1 / num2;
+        }
+    }
+    else {
+        return 0;
+    }
+}
+
+var adder = operationMaker("add");
+var sum = adder(8, 4); // the variable adder now becomes the function in the variable sum
+console.log(sum);
+
+var subtract = operationMaker("subtract");
+var difference = subtract(8, 4);
+console.log(difference);
+
+var mult = operationMaker("mult");
+var product = mult(8, 4);
+console.log(product);
+
+var div = operationMaker ("div");
+var quotient = div(8, 4);
+console.log(quotient);
