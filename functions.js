@@ -21,3 +21,54 @@ function sortStrings (str1, str2) {
 }
 
 console.log(sortStrings("kitties", "dogs"));
+
+
+/* Create an array of objects (don’t need to use new here, just regular object 
+literals). These objects will contain a name and email property. Then, run some 
+code that will sort your array by the longest name. Then, run some code that 
+will sort your array by e-mail address in alphabetical order. */
+
+var object1 = {
+    name: "Kash",
+    email: "klingat@me.com"
+}
+
+var object2 = {
+    name: "Claudia",
+    email: "clingat@me.com"
+}
+
+var arrayObjects = [object1, object2]
+
+//sorts objects by longest name
+arrayObjects.sort(function (object1, object2) {
+            if (object1.name.length < object2.name.length) {
+                return -1;
+            }
+            if (object2.name.length < object1.name.length) {
+                return 1;
+            }
+            else if (object1.name.length === object2.name.length) {
+                return 0;
+            }
+        }
+        );
+
+console.log(arrayObjects);
+
+
+//sorts objects by email, alphabetically
+arrayObjects.sort(function (object1, object2) {
+            if (object1.email < object2.email) {
+                return -1;
+            }
+            if (object2.email < object1.email) {
+                return 1;
+            }
+            else if (object1.email === object2.email) {
+                return 0;
+            }
+        }
+        );
+        
+console.log(arrayObjects);
