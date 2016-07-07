@@ -29,18 +29,16 @@ This function will take parameter `type` and create an object that has these pro
     walkable tiles, use an `O`, and for unwalkable tiles use an `X`. For example, your 
     output could look something like this for a 4x4 map: */
     
-    
 
-
-function Tile (type) {
+function Tile(type) {
     this.type = type;
 }
 
 Tile.prototype = {
-    isWalkable: function (type) {
+    isWalkable: function(type) {
         if (this.type === "grass" || this.type === "sand") {
             return true;
-        } 
+        }
         else {
             return false;
         }
@@ -48,7 +46,7 @@ Tile.prototype = {
 }
 
 
-function randomType () {
+function randomType() {
     var type;
     var randomTypes = Math.random();
     if (randomTypes < 0.33) {
@@ -62,42 +60,59 @@ function randomType () {
     }
 };
 
-function Map (width, height) {
+function Map(width, height) {
     if (!isNaN(width)) {
         this.width = width;
     }
     if (!isNaN(height)) {
-       this.height = height;
+        this.height = height;
     }
-    
-    }
-    
-    
-    Map.prototype = {
-        generateMap: function () {
+
+}
+
+
+Map.prototype = {
+    generateMap: function() {
         var emptyArray = [];
-    
-    for (var x = 0; x < this.width; x++) {
-        var innerArr = [];
-        for (var y = 0; y < this.height; y++) {
-            var u = new Tile(randomType());
+
+        for (var x = 0; x < this.width; x++) {
+            var innerArr = [];
+            for (var y = 0; y < this.height; y++) {
+                var u = new Tile(randomType());
                 innerArr.push(u.type);
             }
-             emptyArray.push(innerArr);
+            emptyArray.push(innerArr);
         }
         this.tiles = emptyArray;
     }
-    }
+};
     
-var map = new Map(4,4);
+Map.prototype.getWalkableOutput = function(emptyArray) {
+        for (var i = 0; i <= emptyArray.length; i++) {
+            if (emptyArray.length[i] === "grass") {
+                return "O"
+            }
+            if (emptyArray.length[i] === "sand") {
+                return "O"
+            }
+            if (emptyArray.length[i] === "water") {
+                return "X"
+            }
+        }
+    }
+
+
+var map = new Map(4, 4);
 map.generateMap();
 console.log(map);
 
-    
+var mapXO = new Map(4, 4);
+map.getWalkableOutput();
+console.log(mapXO)
+
+
 /*   * The `Map` objects should also have two methods on them:
     * `getWalkableOutput`: this method should iterate over the `this.tiles` 2D array, 
     and output in the console a rectangle representing the "walkability" of the map. For 
     walkable tiles, use an `O`, and for unwalkable tiles use an `X`. For example, your 
     output could look something like this for a 4x4 map: */
-    
-    
